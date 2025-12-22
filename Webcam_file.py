@@ -4,12 +4,12 @@ import os
 import numpy as np
 
 # ---------------- CONFIG ----------------
-DATABASE_PATH = os.path.abspath("dataset")         # your dataset folder
+DATABASE_PATH = os.path.abspath("dataset")   # dataset folder with .pkl inside
 MODEL_NAME = "Facenet512"
 DETECTOR = "retinaface"
-THRESHOLD = 0.3                    # strict threshold
-FRAME_SKIP = 15                    # process every 15th frame
-CAMERA_INDEX = 0                   # 0 = default webcam
+THRESHOLD = 0.3                              # strict threshold
+FRAME_SKIP = 15                              # process every Nth frame
+CAMERA_INDEX = 0                             # 0 = default webcam
 
 # ---------------- INIT ----------------
 cap = cv2.VideoCapture(CAMERA_INDEX)
@@ -67,7 +67,8 @@ while True:
                         db_path=DATABASE_PATH,
                         model_name=MODEL_NAME,
                         detector_backend=DETECTOR,
-                        enforce_detection=False
+                        enforce_detection=False,
+                        refresh_database=False   # 🔥 THIS IS THE FIX
                     )
 
                     if len(results) > 0 and not results[0].empty:
