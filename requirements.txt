@@ -1,0 +1,10 @@
+deepface==0.0.93
+tensorflow==2.15.0
+opencv-python
+numpy
+pandas
+tqdm
+retina-face
+mtcnn
+scikit-learn
+protobuf<4
